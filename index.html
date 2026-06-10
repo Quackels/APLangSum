@@ -1,0 +1,601 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raceteenth — Ifemelu's Blog</title>
+
+  <style>
+    :root {
+      --ink: #0D1B2A;
+      --navy: #1B263B;
+      --blue: #415A77;
+      --light-blue: #778DA9;
+      --paper: #E0E1DD;
+      --white: #FAFAF7;
+      --gold: #D4AF37;
+      --gray: #666B73;
+      --line: #E7E2D8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f4ee;
+      color: var(--ink);
+      font-family: Aptos, Calibri, Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 0.85rem;
+      padding: 10px 6vw;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .navbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 22px 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .logo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.1rem;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 28px;
+      color: var(--blue);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .subscribe-small {
+      background: var(--navy);
+      color: var(--paper);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .masthead {
+      max-width: 1180px;
+      margin: 42px auto 28px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .hero {
+      background: var(--navy);
+      color: var(--paper);
+      border-radius: 28px;
+      padding: 54px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 24px 65px rgba(13, 27, 42, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.18);
+      top: -100px;
+      right: -80px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(119, 141, 169, 0.16));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.5rem, 8vw, 6.8rem);
+      line-height: 0.92;
+      margin: 0;
+      font-weight: 400;
+      letter-spacing: -0.07em;
+    }
+
+    .hero p {
+      max-width: 670px;
+      font-size: 1.12rem;
+      line-height: 1.65;
+      color: rgba(224, 225, 221, 0.9);
+      margin: 20px 0 0;
+    }
+
+    .about-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 14px 45px rgba(13, 27, 42, 0.08);
+    }
+
+    .avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.8rem;
+      margin-bottom: 18px;
+    }
+
+    .about-card h2 {
+      font-size: 1.4rem;
+      margin: 0 0 10px;
+      color: var(--navy);
+    }
+
+    .about-card p {
+      color: var(--gray);
+      line-height: 1.65;
+      margin: 0 0 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: #f4f0e8;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--navy);
+    }
+
+    .stat span {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .main {
+      max-width: 1180px;
+      margin: 0 auto 50px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 34px;
+    }
+
+    .article {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 18px 55px rgba(13, 27, 42, 0.08);
+    }
+
+    .article-header {
+      padding: 42px 46px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tag {
+      display: inline-block;
+      background: #efe8d9;
+      color: #806410;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .article h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -0.05em;
+      color: var(--navy);
+      margin: 0 0 18px;
+    }
+
+    .byline {
+      color: var(--gray);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .article-body {
+      padding: 38px 46px 46px;
+    }
+
+    .article-body p {
+      font-size: 1.16rem;
+      line-height: 1.82;
+      margin: 0 0 22px;
+    }
+
+    .dropcap::first-letter {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 4.4rem;
+      float: left;
+      line-height: 0.82;
+      padding-right: 10px;
+      color: var(--gold);
+    }
+
+    blockquote {
+      margin: 36px 0;
+      padding: 26px 30px;
+      border-left: 6px solid var(--gold);
+      background: #f7f2e8;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      line-height: 1.38;
+    }
+
+    .post-footer {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--gray);
+      font-size: 0.92rem;
+    }
+
+    .read-button {
+      background: var(--navy);
+      color: var(--paper);
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 800;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .side-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 12px 35px rgba(13, 27, 42, 0.06);
+    }
+
+    .side-card h3 {
+      margin: 0 0 16px;
+      color: var(--navy);
+      font-size: 1.18rem;
+    }
+
+    .side-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-card li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--gray);
+      line-height: 1.45;
+    }
+
+    .side-card li:last-child {
+      border-bottom: none;
+    }
+
+    .newsletter {
+      background: var(--navy);
+      color: var(--paper);
+    }
+
+    .newsletter h3 {
+      color: var(--paper);
+    }
+
+    .newsletter p {
+      color: rgba(224, 225, 221, 0.82);
+      line-height: 1.6;
+    }
+
+    .fake-input {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 13px;
+      border-radius: 12px;
+      color: rgba(224, 225, 221, 0.72);
+      margin-bottom: 10px;
+    }
+
+    .newsletter button {
+      width: 100%;
+      border: none;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: 900;
+    }
+
+    .comments {
+      margin-top: 26px;
+      background: #f8f5ef;
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .comments h3 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .comment {
+      border-top: 1px solid var(--line);
+      padding: 16px 0 0;
+      margin-top: 16px;
+    }
+
+    .comment strong {
+      color: var(--navy);
+    }
+
+    .comment p {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--gray);
+      margin: 7px 0 0;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--gray);
+      padding: 28px;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      .masthead,
+      .main {
+        grid-template-columns: 1fr;
+      }
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero {
+        padding: 38px;
+      }
+
+      .article-header,
+      .article-body {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <span>Personal Essays · Race · Identity · Hair · Home</span>
+    <span>Creative Element made by Vaibhav Rajesh</span>
+  </div>
+
+  <nav class="navbar">
+    <a class="logo" href="#">Raceteenth</a>
+    <div class="navlinks">
+      <a href="#">Essays</a>
+      <a href="#">Race</a>
+      <a href="#">Immigration</a>
+      <a href="#">Hair</a>
+      <a href="#">About</a>
+    </div>
+    <a class="subscribe-small" href="#">Subscribe</a>
+  </nav>
+
+  <section class="masthead">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Ifemelu's Blog</div>
+        <h1>Raceteenth</h1>
+        <p>
+          Various observations about American Blacks by a Non-American Black.
+          A fictional blog inspired by Chimamanda Ngozi Adichie's <em>Americanah</em>.
+        </p>
+      </div>
+    </div>
+
+    <aside class="about-card">
+      <div class="avatar">I</div>
+      <h2>About Ifemelu</h2>
+      <p>
+        Nigerian writer, observer, immigrant, returnee. Writing about race in America,
+        the performance of belonging, and the complicated feeling of calling more than one place home.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>Topic</strong>
+          <span>Race & identity</span>
+        </div>
+        <div class="stat">
+          <strong>Style</strong>
+          <span>Sharp, honest, reflective</span>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <main class="main">
+    <article class="article">
+      <div class="article-header">
+        <span class="tag">Featured Post</span>
+        <h2>What America Taught Me About Race</h2>
+        <div class="byline">
+          <span>By Ifemelu</span>
+          <span>•</span>
+          <span>Philadelphia, PA</span>
+          <span>•</span>
+          <span>5 min read</span>
+        </div>
+      </div>
+
+      <div class="article-body">
+        <p class="dropcap">
+          I arrived in America expecting to learn new customs, new foods, new classrooms,
+          and new ways of speaking. I expected the cold. I expected homesickness. I even expected
+          confusion. What I did not expect was to learn that I was Black.
+        </p>
+
+        <p>
+          In Nigeria, I was Nigerian. I was Igbo. I was a girl with opinions, with friends,
+          with a mother who worried, and with a future that felt close enough to touch.
+          But in America, before I could be any of those things, I became something else first.
+          I became a category.
+        </p>
+
+        <blockquote>
+          Race in America is not always shouted. Sometimes it is whispered through questions,
+          assumptions, compliments, silences, and smiles that last a little too long.
+        </blockquote>
+
+        <p>
+          People asked where I was from, and then where I was <em>really</em> from.
+          They praised my English as if I had discovered it in my suitcase. They told me they
+          did not see color, while somehow seeing mine clearly enough to comment on it.
+        </p>
+
+        <p>
+          This is what America taught me: race is not simply about skin. It is about the stories
+          people attach to skin before they know anything else about you. It is about which accents
+          sound educated, which hairstyles look professional, and which bodies are treated as if
+          they must explain themselves.
+        </p>
+
+        <p>
+          And still, this is not only a story about America. It is also a story about becoming.
+          About learning what has been placed on you, what you have accepted to survive,
+          and what you eventually choose to put down.
+        </p>
+
+        <div class="comments">
+          <h3>Comments</h3>
+
+          <div class="comment">
+            <strong>Reader in Baltimore</strong>
+            <p>This feels painfully accurate. Especially the part about people complimenting English.</p>
+          </div>
+
+          <div class="comment">
+            <strong>Anonymous</strong>
+            <p>I never thought about hair as something political until reading this.</p>
+          </div>
+        </div>
+
+        <div class="post-footer">
+          <span>Filed under: Race, Immigration, Identity, Americanah</span>
+          <a class="read-button" href="#">Read Americanah</a>
+        </div>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <section class="side-card">
+        <h3>Recent Posts</h3>
+        <ul>
+          <li>Why Does Everyone Ask Where I’m <em>Really</em> From?</li>
+          <li>My Hair Has Become Political</li>
+          <li>The American Accent Experiment</li>
+          <li>What Happens When Home Changes?</li>
+          <li>The Problem with “Colorblindness”</li>
+        </ul>
+      </section>
+
+      <section class="side-card newsletter">
+        <h3>Subscribe</h3>
+        <p>Get new essays on race, identity, love, migration, and home.</p>
+        <div class="fake-input">email@example.com</div>
+        <button>Join the List</button>
+      </section>
+
+      <section class="side-card">
+        <h3>Editor’s Note</h3>
+        <p>
+          This page is a creative representation for an AP Lang presentation.
+          It is meant to attract readers to <em>Americanah</em>, not summarize the full plot.
+        </p>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Identity · Race · Love · Home — Inspired by <em>Americanah</em></p>
+  </footer>
+</body>
+</html>
